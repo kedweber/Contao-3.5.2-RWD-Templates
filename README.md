@@ -1,16 +1,18 @@
-# Contao 3.5.2 CMS & Responsive Web Design \(RWD\)
+# Contao 3.5.2 [CMS](https://en.wikipedia.org/wiki/Content_management_system) & Responsive Web Design \(RWD\)
 
 ## Introduction
 
-This project will contain, among other component and widget developments, a Responsive Web Design \(RWD\) Theme.
+This project will contain, among other component and widget developments, a Responsive Web Design \(RWD\) Theme created for the 
+[Contao](https://contao.org) \(formerly TYPOlight, originally begun by Leo Feyer\) 
+[CMS](https://en.wikipedia.org/wiki/Content_management_system) environment.
 
 While the latest copy of the [Contao CMS](https://contao.org) server, at the time of this writing, is 4.0.2 this project has remained in the older version. 
 This is partly due to both the lack of documentation and the fact that the mechanics have been completely revamped to use the 
-[Symfony2](https://symfony.com) framework and no longer Contao's own proprietary code.
+[Symfony2](https://symfony.com) framework instead of entirely Contao's own proprietary code.
 
 Contao was produced in Germany and has the added advantage to the German's by having a number of their official documenations available in the local 
 language. Of course, their English documentation is also extensive. This is an alternative to using [WordPress](https://wordpress.com/) 
-and/or [Joomla!](http://www.joomla.org) CMSes.
+and/or [Joomla!](http://www.joomla.org) [CMSes](https://en.wikipedia.org/wiki/Content_management_system).
 
 ## REQUIREMENTS
 
@@ -18,15 +20,15 @@ and/or [Joomla!](http://www.joomla.org) CMSes.
 * MySQL 5.0.3 \(minimal support\)
 * [PHP 5.3.7](http://php.net) \(minimal support\)
 * PHP Additional Modules
-    * GDlib \(image resizing\)
+    * [GDlib](https://en.wikipedia.org/wiki/GD_Graphics_Library) \(image resizing\)
     * DOM \(XML file support\)
-    * SOAP \(Extension Repository\)
+    * [SOAP](https://en.wikipedia.org/wiki/SOAP) \(Extension Repository\)
     * Phar \(for internal Live Update engine\)
     * mbstring \(optional, but highly advised when dealing with multi-byte character sets\)
     * mcrypt \(optional for data encryption\)
 * [Contao 3.5.2 CMS](http://download.contao.org) 
 
-## Installing Contao 3.5.2 CMS
+## Installing Contao 3.5.2 [CMS](https://en.wikipedia.org/wiki/Content_management_system)
 
 The official documentation for the installation of Contao can be found [on their documenation page](https://docs.contao.org/). 
 It is briefly reiterated here for the sake of easy and summarized access. 
@@ -186,7 +188,7 @@ Within the "Theme Configuration Tool" one must specify the title and author. Add
 as well as a screenshot and the path to a "templates" folder. Finally, something that Contao seems to make use of more than other 
 CMSes is *Global Variables*. Within the tool, you can pack your theme with additional variables to be available over the entire site.
 
-Contao also supplies a style sheet editor in the backend CMS.
+Contao also supplies a style sheet editor in the backend [CMS](https://en.wikipedia.org/wiki/Content_management_system).
 
 
 # Modules
@@ -199,7 +201,7 @@ protected so only guests or memembers of a particular user's group can see it on
 ## Reference Listing
 
 | Module | CSS Class | Description  |
-| ------------------- | ----------- | ------ |
+| ------ | --------- | ------------ |
 | Navigation Menu | mod_navigation | Generates a navigation menu from the site structure. |
 | Custom Navigation | mod_costomnav | Geerates a custom navigation menu. |
 | Breadcrumb Navigation | mod_breadcrumb | Generates a breadcrumb navigation menu. |
@@ -241,3 +243,44 @@ protected so only guests or memembers of a particular user's group can see it on
 | RSS reader | mod_rss_reader | Adds an RSS feed to a page. |
 
 
+# Page Types
+
+Page types determine if a page shows specific content, forwards the viewer to another page or defines the starting point of a new website 
+within the page tree. Contao contains 6 standard page types found in the table below.
+
+| Page Type | Description |
+|-----------|-------------|
+| Regular Page | A regular page contains articles and content elements. It behaves like a static HTML page. |
+| External Redirect | This type of page automatically redirects visitors to an external website. It works like a hyperlink. |
+| Internal Redirect | This type of page automatically forwards visitors to another page within the site structure. |
+| Website Root | This type of page marks the starting point of a new website within the site structure. |
+| 403 Access Denied | If a user requests a protected page without permission, a 403 error page will be loaded instead. This 
+page must be added on the first level inside your website root page. |
+| 404 Page Not Found | If a user requests a non-existent page, a 404 error page will be loaded instead. This page must be added 
+on the first level inside your website root page. |
+
+# Multi-Domain Mode
+
+Contao supports multi-lingual websites. Here it is written as Multi-Domain Mode, but this is in part due to the fact that first the 
+settings of a domain name are taken into an account. If that domain name exists in only one language, it is served as such, but if 
+there are multiple languages for one domain name, then Contao will first query the client's web-browser's preferred language and act 
+accordingly. 
+
+Notice in the following listing if there is a 'fallback language' listed. Without that setting specified in the backend 
+for all three domains/subdomain(s), the fallback would come to German. 
+
+| Type | DNS | Language Code | Fallback Language |
+|------|-----|---------------|-------------------|
+| Corporate Website in German | none | de | no |
+| Corporate Website in English | none | en | yes |
+| Subdomain Website | www.independent.example.org | de | yes |
+
+Given the settings above, the following chart shows to which domain a user would be redirected, depending upon the domain name 
+which he or she called.
+
+| Domain | Browser Language | Redirect Target |
+|--------|------------------|-----------------|
+| www.example.com | English | Corporate Website in English |
+| www.example.com | German | Corporate Website in German |
+| www.example.com | Spanish | Corporate Website in English |
+| www.independent.example.org | n/a (irrelevant) | Subdomain Website |
