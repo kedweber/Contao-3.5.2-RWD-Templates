@@ -191,14 +191,43 @@ CMSes is *Global Variables*. Within the tool, you can pack your theme with addit
 Contao also supplies a style sheet editor in the backend [CMS](https://en.wikipedia.org/wiki/Content_management_system).
 
 
-# Modules
+# Modules \(News Items &amp; Archives, FrontEnd Modules\)
+ 
+@TODO a good introduction
 
 ## Access Control 
 
 As similar to the CCK's Access Control, Contao also affords individual module access control. Each frontend module can be 
 protected so only guests or memembers of a particular user's group can see it on the website; if deemed so necessary.
 
-## Reference Listing
+## Access Rights
+
+For the sake of clarity, in Contao jargon, **Access Rights** have no relationship to **Access Controls** which control the 
+client's ability to see certain FrontEnd pages. Access rights determine the level of access to those with access in the backend. 
+For further information , please see the [official documentation](https://docs.contao.org/).
+
+### Permalinks in News Modules
+
+Each of the news/blog items has a unique URL \(permalink\) that can be used to reference it. For example, in the following 
+URL, we find the partition "/news", which refers to the news module. The later part \(slug\) refers to the "james-wilson-returns", 
+which is recorded as a reference entered in the related news table in the database. Without both of these parts in the URL, our 
+permalink would return a 404 Not Found Error to the client.
+
+```
+http://www.example.com/news/items/james-wilson-returns.html
+```
+
+Similarly, this would be the construction using the Event Reader module for a reference to an article called 'Final Exams':
+
+```
+http://www.example.com/event-reader/events/final-exams.html
+```
+
+### Module Reference
+
+Note that the News related modules are marked with the prefix "FrontEnd:" which means that Access Rights can be applied to them. 
+Additionally, Contao considers the functionality of the News Modules to be the same as that which would be expected of a similar 
+(separate, but not here) **Blog** module.
 
 | Module | CSS Class | Description  |
 | ------ | --------- | ------------ |
@@ -217,14 +246,14 @@ protected so only guests or memembers of a particular user's group can see it on
 | Change Password | mod_changePassword | Generates a form to change a user's password. |
 | Lost Password | mod_password | Generates  a form for requesting a new password. |
 | Close Account | mod_closeAccount | Generates a form to delete a member account. |
-| Newslist | mod_newslist | Adds a list of news items to the page. |
-| Newsreader | mod_newsreader | Shows the details of a news item. |
-| News Archive | mod_newsarchive | Adds a news archive to the page. |
-| News Archive Menu | mod_newsmenu | Generates a navigation menu to browse the news archive(s). |
-| Calendar | mod_calendar | Adds a calendar to the page. |
-| Event Reader | mod_eventreader | Shows the details of an event. |
-| Event List | mod_eventlist | Adds a list of events to the page. |
-| Event List Menu | mod_eventmenu | Generates a navigation menu to browse the event list. |
+| FrontEnd: Newslist | mod_newslist | Adds a list of news items to the page. |
+| FrontEnd: Newsreader | mod_newsreader | Shows the details of a news item. |
+| FrontEnd: News Archive | mod_newsarchive | Adds a news archive to the page. |
+| FrontEnd: News Archive Menu | mod_newsmenu | Generates a navigation menu to browse the news archive(s). |
+| FrontEnd: Calendar | mod_calendar | Adds a calendar to the page. |
+| FrontEnd: Event Reader | mod_eventreader | Shows the details of an event. |
+| FrontEnd: Event List | mod_eventlist | Adds a list of events to the page. |
+| FrontEnd: Event List Menu | mod_eventmenu | Generates a navigation menu to browse the event list. |
 | Subscribe | mod_subscribe | Generates a form to subscribe to one or more channels. |
 | Unsubscribe | mod_unsubscribe | Generates a form to unsubscribe from one or more channels. |
 | Newsletter List | mod_nl_list | Adds a list of newsletters to the page |
@@ -254,10 +283,8 @@ within the page tree. Contao contains 6 standard page types found in the table b
 | External Redirect | This type of page automatically redirects visitors to an external website. It works like a hyperlink. |
 | Internal Redirect | This type of page automatically forwards visitors to another page within the site structure. |
 | Website Root | This type of page marks the starting point of a new website within the site structure. |
-| 403 Access Denied | If a user requests a protected page without permission, a 403 error page will be loaded instead. This 
-page must be added on the first level inside your website root page. |
-| 404 Page Not Found | If a user requests a non-existent page, a 404 error page will be loaded instead. This page must be added 
-on the first level inside your website root page. |
+| 403 Access Denied | If a user requests a protected page without permission, a 403 error page will be loaded instead. This page must be added on the first level inside your website root page. |
+| 404 Page Not Found | If a user requests a non-existent page, a 404 error page will be loaded instead. This page must be added on the first level inside your website root page. |
 
 # Multi-Domain Mode
 
